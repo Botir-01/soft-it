@@ -58,7 +58,7 @@ class IndexAboutUsSerializer(serializers.ModelSerializer):
         model = AboutCompany
 
     def get_images(self, obj):
-        images = CompanyImage.objects.filter(company_id=obj, main=True)
+        images = CompanyImage.objects.filter(company_id=obj, is_main=True)
         return IndexCompanyImageSerializer(images, many=True).data
     
 
@@ -137,5 +137,5 @@ class AboutCompanySerializer(serializers.ModelSerializer):
         model = AboutCompany
 
     def get_images(self, obj):
-        images = CompanyImage.objects.filter(company_id=obj, main=False)
+        images = CompanyImage.objects.filter(company_id=obj, is_main=False)
         return CompanyImageSerializer(images, many=True).data
