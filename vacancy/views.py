@@ -44,7 +44,7 @@ class UserResumeView(viewsets.ViewSet, CustomModalViewSet, generics.CreateAPIVie
         serializer = self.get_serializer_class()
         serializer = serializer(data=request.data)
         if serializer.is_valid():
-            obj = UserResumeSerializer.objects.create(**serializer.validated_data)
+            obj = UserResume.objects.create(**serializer.validated_data)
         
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
